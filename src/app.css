@@ -1,0 +1,10 @@
+html{
+    background-color: azure;
+}
+.App{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: auto;
+    background-color: azure;
+}
