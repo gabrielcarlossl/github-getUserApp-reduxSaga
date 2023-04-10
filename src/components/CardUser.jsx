@@ -25,7 +25,7 @@ const CardUser = () => {
     return (
 
         <div className='container'>
-            <h1>Procure um usuário:</h1>
+            <h1>Procure um usuário do Git Hub:</h1>
             <form onSubmit={handleSubmit}>
                 <input
                     className='input-search'
@@ -37,17 +37,16 @@ const CardUser = () => {
             </form>
             {isLoading && <p>Carregando...</p>}
             {error && (
-                <p>
-                    Ocorreu um erro:{" "}
+                <h2>
                     {error.message === "Request failed with status code 404"
-                        ? "Usuário não encontrado"
+                        ? "Usuário não encontrado!"
                         : error.message}
-                </p>
+                </h2>
             )}
             {user && (
                 <div className='userInfo'>
                     <hr className='hr' />
-                    <img className='avatar' src={user.avatar_url} alt={user.login} width="80" height="80" />
+                    <img className='avatar' src={user.avatar_url} alt={user.login} width="200" />
                     <h2>Nome: {user.name}</h2>
 
                     {user.name ? (
