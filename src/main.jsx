@@ -5,8 +5,10 @@ import App from './App'
 // Para configurar o redux Importa provider, cobre o <App></App>, 
 // importa createStore, combineReducer, applyMiddleware do redux
 import { Provider } from 'react-redux'
-import { createStore, combineReducers, applyMiddleware } from 'redux'
 import createSagaMiddleware from 'redux-saga'
+import { createStore, applyMiddleware } from 'redux'
+import userSaga from './store/saga'
+import userReducer from './store/reducer'
 
 // Inicia a função sagaMiddleware com o createSagaMiddleware,
 // inicia a rootReducer com o reducer criado, e instancia a store
@@ -14,14 +16,11 @@ import createSagaMiddleware from 'redux-saga'
 
 const sagaMiddleware = createSagaMiddleware()
 
-const rootReducer = combineReducers()
-const store = createStore( rootReducer, applyMiddleware(sagaMiddleware))
+const store = createStore( userReducer, applyMiddleware(sagaMiddleware))
 sagaMiddleware.run(userSaga)
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
     <Provider store={store}>
       <App />
     </Provider>
-  </React.StrictMode>,
 )
